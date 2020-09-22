@@ -12,24 +12,26 @@ namespace TP1_SISTEMASWEB2
         static void Main(string[] args)
         {
 
+            BookRepository repository = new BookRepository();
+
+            Console.WriteLine("Digite o id do livro: \n");
+            string valor;
+            valor = Console.ReadLine();
+            int id = int.Parse(valor);
+
+            Book book = repository.getBookById(id);
+
+            Console.WriteLine(book.ToString());
+            Console.WriteLine(book.GetAuthorNames());
+
             IWebHost host = new WebHostBuilder()
             .UseKestrel()
             .UseStartup<Startup>()
             .Build();
 
             host.Run();
-            //BookRepository repository = new BookRepository();
 
-            //Console.WriteLine("Digite o número do livro: \n");
-            //string valor;
-            //valor = Console.ReadLine();
-            //int id = int.Parse(valor);
-
-            //Book book = repository.getBookById(id);
-
-            //Console.WriteLine(book.ToString());
-
-            ////List<string> lista = repository.getBookById(1);
+           
 
             Console.ReadKey();            
         }
